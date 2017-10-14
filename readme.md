@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img alt="laravel" src="https://habrastorage.org/webt/59/e1/c4/59e1c40b83e9d293787547.png" width="70" height="70" /> <img alt="logo" src="https://habrastorage.org/webt/59/df/45/59df45aa6c9cb971309988.png" width="70" height="70" />
+  <img alt="laravel" src="https://avatars1.githubusercontent.com/u/32733112?s=70&v=4" width="70" height="70" /> <img alt="logo" src="https://habrastorage.org/webt/59/df/45/59df45aa6c9cb971309988.png" width="70" height="70" /> <img alt="laravel" src="https://habrastorage.org/webt/59/e1/c4/59e1c40b83e9d293787547.png" width="70" height="70" />
 </p>
 
 # Сервис для работы с B2B API ресурса "avtocod" для Laravel 5
