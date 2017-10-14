@@ -1,0 +1,13 @@
+# Environment deps.
+composer.lock
+
+# Vendors
+/vendor
+
+# Temp dirs & trash
+/temp
+/tmp
+/*.tmp
+
+# etc.
+/coverage
