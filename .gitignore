@@ -1,6 +1,10 @@
 # Environment deps.
 composer.lock
 
+# IDEs
+/nbproject
+/.idea
+
 # Vendors
 /vendor
 
