@@ -11,12 +11,12 @@
     }
   ],
   "require": {
-    "php": "^5.6 || ^7.0",
+    "php": "^5.6 || >=7.0 <7.3",
     "avto-dev/b2b-api-php-laravel": "2.*",
-    "laravel/framework": "~5.4"
+    "laravel/framework": "5.4.* || 5.5.* || 5.6.*"
   },
   "require-dev": {
-    "laravel/laravel": "~5.4",
+    "laravel/laravel": "5.4.* || 5.5.* || 5.6.*",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~5.7 || ^6.4"
   },
