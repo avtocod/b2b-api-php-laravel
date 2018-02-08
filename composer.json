@@ -16,12 +16,12 @@
         }
     ],
     "require": {
-        "php": "^5.6 || ^7.0",
+        "php": "^5.6 || >=7.0 <7.3",
         "avto-dev/b2b-api-php-laravel": "2.*",
-        "laravel/framework": "~5.4"
+        "laravel/framework": "5.4.* || 5.5.* || 5.6.*"
     },
     "require-dev": {
-        "laravel/laravel": "~5.4",
+        "laravel/laravel": "5.4.* || 5.5.* || 5.6.*",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7 || ^6.4"
     },
@@ -35,9 +35,8 @@
             "Avtocod\\B2BApiLaravel\\Tests\\": "tests"
         }
     },
-    "support": {
-        "issues": "https://github.com/avtocod/b2b-api-php-laravel/issues",
-        "source": "https://github.com/avtocod/b2b-api-php-laravel"
+    "config": {
+        "sort-packages": true
     },
     "scripts": {
         "test": "./vendor/bin/phpunit"
@@ -49,7 +48,8 @@
             ]
         }
     },
-    "config": {
-        "sort-packages": true
+    "support": {
+        "issues": "https://github.com/avtocod/b2b-api-php-laravel/issues",
+        "source": "https://github.com/avtocod/b2b-api-php-laravel"
     }
 }
