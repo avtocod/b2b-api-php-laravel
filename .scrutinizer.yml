@@ -51,3 +51,14 @@ build:
             coverage:
               file: 'clover-file'
               format: 'clover'
+
+    php72:
+      environment:
+        php: 7.2
+      tests:
+        override:
+          -
+            command: 'vendor/bin/phpunit --coverage-clover=clover-file'
+            coverage:
+              file: 'clover-file'
+              format: 'clover'
