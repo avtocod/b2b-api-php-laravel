@@ -9,7 +9,7 @@ return [
      |
      | Базовый URI, по которому находится API B2B сервиса.
      */
-    'api_base_uri' => 'https://b2bapi.avtocod.ru/b2b/api/v1',
+    'api_base_uri' => env('B2B_API_BASE_URI', 'https://b2bapi.avtocod.ru/b2b/api/v1'),
 
     /*
      | --------------------------------------------------------------------------
