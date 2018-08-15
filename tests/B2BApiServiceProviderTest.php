@@ -59,6 +59,9 @@ class B2BApiServiceProviderTest extends AbstractUnitTestCase
         $this->assertTrue(is_array($config['report_types']['uids']));
         $this->assertTrue(is_array($config['report_types']['uids']['default']));
 
+        $this->assertNull($config['webhooks']['on']['complete']);
+        $this->assertNull($config['webhooks']['on']['update']);
+
         $this->assertEquals('default', $config['report_types']['use_as_default']);
 
         $this->assertTrue(is_bool($config['is_test']));

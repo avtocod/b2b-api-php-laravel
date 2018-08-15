@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^5.6 || >=7.0 <7.3",
-        "avto-dev/b2b-api-php-laravel": "^2.0.11",
+        "avto-dev/b2b-api-php-laravel": "^2.3",
         "laravel/framework": ">=5.4.0 <5.7.0"
     },
     "require-dev": {

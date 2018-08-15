@@ -20,7 +20,7 @@
 Для установки данного пакета выполните в терминале следующую команду:
 
 ```shell
-$ composer require avtocod/b2b-api-php-laravel "^2.0.3"
+$ composer require avtocod/b2b-api-php-laravel "^2.3"
 ```
 
 > Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
