@@ -98,6 +98,8 @@ return [
      | Уведомления приходят в виде POST запросов. Подробнее о составе
      | отправляемых данных читайте в документации.
      |
+     | See: <https://b2bapi.avtocod.ru/doc/integration.md>
+     |
      | Возможные значения: %uri_string%|null
      */
     'webhooks'     => [
