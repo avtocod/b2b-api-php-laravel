@@ -4,14 +4,13 @@
 
 # Расширенный клиент для работы с B2B API ресурса "avtocod"
 
-[![Version][badge_version]][link_packagist]
+[![Version][badge_packagist_version]][link_packagist]
+[![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
-[![StyleCI][badge_styleci]][link_styleci]
 [![Coverage][badge_coverage]][link_coverage]
-[![Code Quality][badge_quality]][link_coverage]
-[![Issues][badge_issues]][link_issues]
-[![License][badge_license]][link_license]
+[![Code quality][badge_code_quality]][link_code_quality]
 [![Downloads count][badge_downloads_count]][link_packagist]
+[![License][badge_license]][link_license]
 
 При помощи данного пакета вы сможете интегрировать сервис по работе с B2B API ресурса "avtocod" в ваше **Laravel &gt;=5.4** приложение с помощью нескольких простых шагов.
 
@@ -20,7 +19,7 @@
 Для установки данного пакета выполните в терминале следующую команду:
 
 ```shell
-$ composer require avtocod/b2b-api-php-laravel "^2.3"
+$ composer require avtocod/b2b-api-php-laravel "^2.2"
 ```
 
 > Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
@@ -54,29 +53,54 @@ $ ./artisan vendor:publish --provider="Avtocod\B2BApiLaravel\B2BApiServiceProvid
 
 Для получения подробной информации о работе с сервисом и его документацией, пожалуйста, перейдите по следующей ссылке: **[avto-dev/b2b-api-php-laravel][b2b_api_client_laravel]**.
 
-## Поддержка и развитие
+### Testing
 
-Если у вас возникли какие-либо проблемы по работе с данным пакетом, пожалуйста, создайте соответствующий `issue` в репозитории [по этой ссылке][b2b_api_client_laravel].
+For package testing we use `phpunit` framework. Just write into your terminal:
 
-Если вы способны самостоятельно реализовать тот функционал, что вам необходим - создайте PR с соответствующими изменениями. Крайне желательно сопровождать PR соответствующими тестами, фиксирующими работу ваших изменений. После проверки и принятия изменений будет опубликована новая минорная версия.
+```shell
+$ git clone git@github.com:avtocod/b2b-api-php-laravel.git ./b2b-api-php-laravel && cd $_
+$ composer install
+$ composer test
+```
 
-## Лицензирование
+## Changes log
 
-Код данного пакета распространяется под лицензией [MIT][link_license].
+[![Release date][badge_release_date]][link_releases]
+[![Commits since latest release][badge_commits_since_release]][link_commits]
 
-[badge_version]:https://img.shields.io/packagist/v/avtocod/b2b-api-php-laravel.svg?style=flat&maxAge=30
-[badge_downloads_count]:https://img.shields.io/packagist/dt/avtocod/b2b-api-php-laravel.svg?style=flat&maxAge=30
-[badge_license]:https://img.shields.io/packagist/l/avtocod/b2b-api-php-laravel.svg?style=flat&maxAge=30
-[badge_build_status]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/badges/build.png?b=master
-[badge_styleci]:https://styleci.io/repos/106925654/shield
-[badge_coverage]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/badges/coverage.png?b=master
-[badge_quality]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/badges/quality-score.png?b=master
-[badge_issues]:https://img.shields.io/github/issues/avtocod/b2b-api-php-laravel.svg?style=flat&maxAge=30
+Changes log can be [found here][link_changes_log].
+
+## Support
+
+[![Issues][badge_issues]][link_issues]
+[![Issues][badge_pulls]][link_pulls]
+
+If you will find any package errors, please, [make an issue][link_create_issue] in current repository.
+
+## License
+
+This is open-sourced software licensed under the [MIT License][link_license].
+
+[badge_packagist_version]:https://img.shields.io/packagist/v/avtocod/b2b-api-php-laravel.svg?maxAge=180
+[badge_php_version]:https://img.shields.io/packagist/php-v/avtocod/b2b-api-php-laravel.svg?longCache=true
+[badge_build_status]:https://travis-ci.org/avtocod/b2b-api-php-laravel.svg?branch=master
+[badge_code_quality]:https://img.shields.io/scrutinizer/g/avtocod/b2b-api-php-laravel.svg?maxAge=180
+[badge_coverage]:https://img.shields.io/codecov/c/github/avtocod/b2b-api-php-laravel/master.svg?maxAge=60
+[badge_downloads_count]:https://img.shields.io/packagist/dt/avtocod/b2b-api-php-laravel.svg?maxAge=180
+[badge_license]:https://img.shields.io/packagist/l/avtocod/b2b-api-php-laravel.svg?longCache=true
+[badge_release_date]:https://img.shields.io/github/release-date/avtocod/b2b-api-php-laravel.svg?style=flat-square&maxAge=180
+[badge_commits_since_release]:https://img.shields.io/github/commits-since/avtocod/b2b-api-php-laravel/latest.svg?style=flat-square&maxAge=180
+[badge_issues]:https://img.shields.io/github/issues/avtocod/b2b-api-php-laravel.svg?style=flat-square&maxAge=180
+[badge_pulls]:https://img.shields.io/github/issues-pr/avtocod/b2b-api-php-laravel.svg?style=flat-square&maxAge=180
+[link_releases]:https://github.com/avtocod/b2b-api-php-laravel/releases
 [link_packagist]:https://packagist.org/packages/avtocod/b2b-api-php-laravel
-[link_styleci]:https://styleci.io/repos/106925654/
-[link_license]:https://github.com/avtocod/b2b-api-php-laravel/blob/master/LICENSE
-[link_build_status]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/build-status/master
-[link_coverage]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/?branch=master
+[link_build_status]:https://travis-ci.org/avtocod/b2b-api-php-laravel
+[link_coverage]:https://codecov.io/gh/avtocod/b2b-api-php-laravel/
+[link_changes_log]:https://github.com/avtocod/b2b-api-php-laravel/blob/master/CHANGELOG.md
+[link_code_quality]:https://scrutinizer-ci.com/g/avtocod/b2b-api-php-laravel/
 [link_issues]:https://github.com/avtocod/b2b-api-php-laravel/issues
-[getcomposer]:https://getcomposer.org/download/
+[link_create_issue]:https://github.com/avtocod/b2b-api-php-laravel/issues/new/choose
+[link_commits]:https://github.com/avtocod/b2b-api-php-laravel/commits
+[link_pulls]:https://github.com/avtocod/b2b-api-php-laravel/pulls
+[link_license]:https://github.com/avtocod/b2b-api-php-laravel/blob/master/LICENSE
 [b2b_api_client_laravel]:https://github.com/avto-dev/b2b-api-php-laravel
