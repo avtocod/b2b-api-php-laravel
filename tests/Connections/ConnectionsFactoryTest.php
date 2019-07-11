@@ -334,10 +334,5 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->events->assertDispatched(BeforeRequestSendingEvent::class);
         $this->events->assertDispatched(AfterRequestSendingEvent::class);
         $this->events->assertNotDispatched(RequestFailedEvent::class);
-
-        /** @var AfterRequestSendingEvent $after */
-        $after = $this->events->dispatched(AfterRequestSendingEvent::class)->first()[0];
-
-        $this->assertSame($response, $after->getResponse());
     }
 }
