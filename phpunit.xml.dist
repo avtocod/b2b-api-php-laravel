@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<phpunit bootstrap="tests/bootstrap.php"
          backupGlobals="false"
          backupStaticAttributes="false"
          colors="true"
@@ -7,7 +7,8 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="true">
+         forceCoversAnnotation="true"
+         stopOnFailure="false">
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests</directory>
@@ -27,8 +28,4 @@
         <log type="coverage-clover" target="./coverage/clover.xml"/>
         <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
     </logging>
-    <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="B2B_API_IS_TEST" value="true"/>
-    </php>
 </phpunit>

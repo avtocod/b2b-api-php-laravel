@@ -16,33 +16,53 @@
         }
     ],
     "require": {
-        "php": "^5.6 || >=7.0",
-        "avto-dev/b2b-api-php-laravel": "^2.5",
-        "laravel/framework": ">=5.4.0 <5.8.0"
+        "php": "^7.1.3",
+        "avtocod/b2b-api-php": "^3.1",
+        "illuminate/support": ">=5.4.0 <5.9.0",
+        "illuminate/container": ">=5.4.0 <5.9.0",
+        "illuminate/contracts": ">=5.4.0 <5.9.0",
+        "illuminate/events": ">=5.4.0 <5.9.0",
+        "illuminate/config": ">=5.4.0 <5.9.0"
     },
     "require-dev": {
-        "laravel/laravel": ">=5.4.0 <5.8.0",
-        "mockery/mockery": "0.9.* || ~1.0",
-        "phpunit/phpunit": "~5.7 || ^6.4 || ~7.0"
+        "ext-json": "*",
+        "laravel/laravel": ">=5.4.0 <5.9.0",
+        "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^0.11.3",
+        "phpunit/phpunit": "~5.7.10 || ^6.4 || ~7.5",
+        "tarampampam/guzzle-url-mock": "^1.1"
     },
     "autoload": {
         "psr-4": {
-            "Avtocod\\B2BApiLaravel\\": "src"
+            "Avtocod\\B2BApi\\Laravel\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Avtocod\\B2BApiLaravel\\Tests\\": "tests"
+            "Avtocod\\B2BApi\\Laravel\\Tests\\": "tests"
         }
     },
+    "suggest": {
+        "avtocod/specs": "Avtocod project public specifications."
+    },
     "scripts": {
-        "test": "@php ./vendor/bin/phpunit --no-coverage",
-        "test-cover": "@php ./vendor/bin/phpunit --coverage-html='./coverage/html'"
+        "phpunit": "@php ./vendor/bin/phpunit --no-coverage --colors=always",
+        "phpunit-feature": "@php ./vendor/bin/phpunit --no-coverage --colors=always",
+        "phpunit-cover": "@php ./vendor/bin/phpunit --coverage-html='./coverage/html'",
+        "phpstan": "@php ./vendor/bin/phpstan analyze -c ./phpstan.neon.dist --no-progress --ansi",
+        "test": [
+            "@phpstan",
+            "@phpunit"
+        ],
+        "test-cover": [
+            "@phpstan",
+            "@phpunit-cover"
+        ]
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Avtocod\\B2BApiLaravel\\B2BApiServiceProvider"
+                "Avtocod\\B2BApi\\Laravel\\ServiceProvider"
             ]
         }
     },

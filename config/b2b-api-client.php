@@ -3,122 +3,80 @@
 return [
 
     /*
-     | --------------------------------------------------------------------------
-     | URI сервиса B2B API
-     | --------------------------------------------------------------------------
-     |
-     | Базовый URI, по которому находится API B2B сервиса.
-     */
-    'api_base_uri' => env('B2B_API_BASE_URI', 'https://b2bapi.avtocod.ru/b2b/api/v1'),
+    |--------------------------------------------------------------------------
+    | Default Report Type
+    |--------------------------------------------------------------------------
+    |
+    | Report type name, that will be used by default.
+    |
+    */
+    'default_report_type' => 'default',
 
     /*
-     | --------------------------------------------------------------------------
-     | Домен пользователя
-     | --------------------------------------------------------------------------
-     |
-     | Домен учётной записи, которая используется для взаимодействия с B2B
-     | сервисом.
-     */
-    'domain'       => env('B2B_API_CLIENT_DOMAIN', '%set_your_domain_here%'),
+    |--------------------------------------------------------------------------
+    | Report Types Settings
+    |--------------------------------------------------------------------------
+    |
+    | Declared here report types accessible using `RepositoryInterface`. You
+    | must follows next declaration template:
+    |
+    | ```
+    | 'name' => ['uid' => 'report_type_uid@gomain'],
+    | ```
+    |
+    */
+    'report_types'        => [
 
-    /*
-     | --------------------------------------------------------------------------
-     | Имя пользователя
-     | --------------------------------------------------------------------------
-     |
-     | Имя пользователя учётной записи, которая используется для взаимодействия
-     | с B2B сервисом.
-     */
-    'username'     => env('B2B_API_CLIENT_USERNAME', '%set_your_username_here%'),
-
-    /*
-     | --------------------------------------------------------------------------
-     | Пароль пользователя
-     | --------------------------------------------------------------------------
-     |
-     | Пароль пользователя учётной записи, которая используется для
-     | взаимодействия с B2B сервисом. В открытом виде пароль не передаётся,
-     | используется для генерации токена авторизации.
-     */
-    'password'     => env('B2B_API_CLIENT_PASSWORD', '%set_your_password_here%'),
-
-    /*
-     | --------------------------------------------------------------------------
-     | Типы отчетов
-     | --------------------------------------------------------------------------
-     |
-     | В данной секции описываются настройки типов отчётов, доступных для работы.
-     | Обязательным является ключ `uids`.
-     */
-    'report_types' => [
-
-        /*
-         | ----------------------------------------------------------------------
-         | UID-ы типов отчетов
-         | ----------------------------------------------------------------------
-         |
-         | Описываются в формате:
-         |
-         | <code>
-         |   '%внутренний_алиас_типа_отчёта%' => [
-         |       'uid'         => '%uid_ипа_отчета%',
-         |       'description' => '%его_описание%',
-         |   ]
-         | </code>
-         */
-        'uids'           => [
-            'default'  => [
-                'uid'         => '%some_report_type_uid_here%',
-                'description' => 'Some report type description',
-            ],
-            'extended' => [
-                'uid'         => '%one_more_report_type_uid%',
-                'description' => 'One more report type description',
-            ],
+        'default' => [
+            'uid' => env('B2B_API_REPORT_TYPE_UID', 'some_report_type_uid@domain'),
         ],
-
-        /*
-         | ----------------------------------------------------------------------
-         | Тип отчета, используемый по умолчанию
-         | ----------------------------------------------------------------------
-         |
-         | Должен присутствовать в ключах массиве 'uids' (алиас должен
-         | существовать).
-         */
-        'use_as_default' => env('B2B_API_DEFAULT_REPORT_TYPE', 'default'),
 
     ],
 
     /*
-     | --------------------------------------------------------------------------
-     | WebHooks
-     | --------------------------------------------------------------------------
-     |
-     | URI, по которым будут отправляться уведомления от сервиса B2B API.
-     | Уведомления приходят в виде POST запросов. Подробнее о составе
-     | отправляемых данных читайте в документации.
-     |
-     | See: <https://b2bapi.avtocod.ru/doc/integration.md>
-     |
-     | Возможные значения: %uri_string%|null
-     */
-    'webhooks'     => [
-        'on' => [
-            'complete' => env('B2B_API_WEBHOOK_ON_COMPLETE', null),
-            'update'   => env('B2B_API_WEBHOOK_ON_UPDATE', null),
-        ],
-    ],
+    |--------------------------------------------------------------------------
+    | Default B2B API Client
+    |--------------------------------------------------------------------------
+    |
+    | Connection name, that will be used by default.
+    |
+    */
+    'default_connection'  => 'default',
 
     /*
-     | --------------------------------------------------------------------------
-     | Режим тестирования
-     | --------------------------------------------------------------------------
-     |
-     | Состояние режима тестирования, при включении которого происходит лишь
-     | эмуляция запросов, вместо их реального выполнения.
-     |
-     | Возможные значения: true|false
-     */
-    'is_test' => (bool) env('B2B_API_IS_TEST', false),
+    |--------------------------------------------------------------------------
+    | B2B API Clients Settings
+    |--------------------------------------------------------------------------
+    |
+    | Key is connection name, and value is its configuration. Each
+    | configuration allows to use:
+    |
+    | - `base_uri` (string|null) - Override default B2B API base URI (optional)
+    | - `auth`     (array)       - Authorization settings
+    |   - `token`    (string|null) - Ready auth token (any another auth
+    |                                settings will be ignored)
+    |   - `username` (string|null) - Username (login, *without* domain)
+    |   - `password` (string|null) - User password
+    |   - `domain`   (string|null) - User domain
+    |   - `lifetime` (int|null)    - Token lifetime (in seconds, optional)
+    | - `guzzle_options` (array|null) - Guzzle client options (optional)
+    |                                   Docs: <http://docs.guzzlephp.org/en/latest/quickstart.html>
+    |
+    */
+    'connections'         => [
+
+        'default' => [
+            'base_uri'       => env('B2B_API_BASE_URI', null),
+            'auth'           => [
+                'token'    => env('B2B_API_AUTH_TOKEN', null),
+                'username' => env('B2B_API_AUTH_USERNAME', 'user'),
+                'password' => env('B2B_API_AUTH_PASSWORD', 'pass'),
+                'domain'   => env('B2B_API_AUTH_DOMAIN', 'domain'),
+                'lifetime' => (int) env('B2B_API_TOKEN_LIFETIME', 3600),
+            ],
+            'guzzle_options' => [],
+        ],
+
+    ],
 
 ];
