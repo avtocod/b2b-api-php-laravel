@@ -9,6 +9,7 @@ use RuntimeException;
 use Avtocod\B2BApi\Client;
 use Avtocod\B2BApi\Settings;
 use Avtocod\B2BApi\ClientInterface;
+use Avtocod\B2BApi\WithSettingsInterface;
 use Avtocod\B2BApi\Tokens\Auth\AuthToken;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 
@@ -27,52 +28,59 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     /**
      * @var EventsDispatcher|null
      */
-    protected $events;
+    protected $dispatcher;
 
     /**
      * Create a new ConnectionsFactory instance.
      *
      * @param array                 $settings     An array with connection settings
-     *                                            (like `['name' => ['endpoint' => '...'], ...], ...`)
+     *                                            (like `['name' => ['base_uri' => '...'], ...]`)
      * @param string|null           $default_name Default connection name
-     * @param EventsDispatcher|null $events       Required for proxying client event into laravel events dispatcher
+     * @param EventsDispatcher|null $dispatcher   Required for proxying client event into laravel events dispatcher
      */
-    public function __construct(array $settings, ?string $default_name = null, ?EventsDispatcher $events = null)
+    public function __construct(array $settings, ?string $default_name = null, ?EventsDispatcher $dispatcher = null)
     {
         foreach ($settings as $name => $connection_options) {
             $this->addFactory($name, $connection_options);
         }
 
         $this->default_name = $default_name;
-        $this->events       = $events;
+        $this->dispatcher   = $dispatcher;
     }
 
     /**
-     * {@inheritdoc}
+     * Add connection factory.
+     *
+     * IMPORTANT: Passed settings must follows settings format!
+     *
+     * @param string $connection_name
+     * @param array  $settings
+     *
+     * @return void
      */
     public function addFactory(string $connection_name, array $settings = []): void
     {
         // Create connections factory
         $this->factories[$connection_name] = Closure::fromCallable(function () use ($settings): ClientInterface {
-            $authorization = $settings['authorization'];
+            $authorization = $settings['auth'];
 
             $token = $authorization['token'] ?? AuthToken::generate(
                     $authorization['username'],
                     $authorization['password'],
                     $authorization['domain'],
-                    $authorization['lifetime'] ?? 172800
+                    $authorization['lifetime'] ?? 3600
                 );
 
             return new Client(
                 new Settings(
                     $token,
-                    $settings['endpoint'] ?? null,
+                    $settings['base_uri'] ?? null,
                     $settings['guzzle_options'] ?? null
                 ),
                 null,
                 function ($event): void {
-                    if ($this->events instanceof EventsDispatcher) {
-                        $this->events->dispatch($event);
+                    if ($this->dispatcher instanceof EventsDispatcher) {
+                        $this->dispatcher->dispatch($event);
                     }
                 }
             );
@@ -80,7 +88,11 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Remove connection factory.
+     *
+     * @param string $connection_name
+     *
+     * @return void
      */
     public function removeFactory(string $connection_name): void
     {
@@ -99,6 +111,8 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      * {@inheritdoc}
      *
      * @throws RuntimeException
+     *
+     * @return ClientInterface|WithSettingsInterface
      */
     public function make(string $connection_name): ClientInterface
     {
@@ -121,6 +135,8 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      * {@inheritdoc}
      *
      * @throws RuntimeException
+     *
+     * @return ClientInterface|WithSettingsInterface
      */
     public function default(): ClientInterface
     {

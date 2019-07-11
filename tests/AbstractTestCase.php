@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Avtocod\B2BApiLaravel\Tests;
+namespace Avtocod\B2BApi\Laravel\Tests;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel;

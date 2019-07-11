@@ -26,13 +26,6 @@ interface RepositoryInterface
     public function has(string $name): bool;
 
     /**
-     * Get all report types.
-     *
-     * @return ReportTypeInfo[]|array
-     */
-    public function all(): array;
-
-    /**
      * Get all report type names.
      *
      * @return string[]

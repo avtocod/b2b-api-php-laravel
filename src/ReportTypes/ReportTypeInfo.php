@@ -30,4 +30,14 @@ class ReportTypeInfo
     {
         return $this->uid;
     }
+
+    /**
+     * Get report type UID.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->uid;
+    }
 }

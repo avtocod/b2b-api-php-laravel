@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\ReportTypes;
 
+use Countable;
 use RuntimeException;
 
-class Repository implements RepositoryInterface
+class Repository implements RepositoryInterface, Countable
 {
     /**
      * @var ReportTypeInfo[]|array
@@ -58,14 +59,6 @@ class Repository implements RepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function all(): array
-    {
-        return $this->report_types;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function names(): array
     {
         return \array_keys($this->report_types);
@@ -83,5 +76,13 @@ class Repository implements RepositoryInterface
         }
 
         return $this->get($this->default_name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function count(): int
+    {
+        return \count($this->report_types);
     }
 }
