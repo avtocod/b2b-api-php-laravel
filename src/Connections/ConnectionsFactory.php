@@ -9,8 +9,8 @@ use RuntimeException;
 use Avtocod\B2BApi\Client;
 use Avtocod\B2BApi\Settings;
 use Avtocod\B2BApi\ClientInterface;
-use Avtocod\B2BApi\WithSettingsInterface;
 use Avtocod\B2BApi\Tokens\Auth\AuthToken;
+use Avtocod\B2BApi\WithSettingsInterface;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 
 class ConnectionsFactory implements ConnectionsFactoryInterface

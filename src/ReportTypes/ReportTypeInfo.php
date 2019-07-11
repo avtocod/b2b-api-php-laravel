@@ -26,7 +26,7 @@ class ReportTypeInfo
      *
      * @return string
      */
-    public function getUid(): string
+    public function __toString(): string
     {
         return $this->uid;
     }
@@ -36,7 +36,7 @@ class ReportTypeInfo
      *
      * @return string
      */
-    public function __toString(): string
+    public function getUid(): string
     {
         return $this->uid;
     }

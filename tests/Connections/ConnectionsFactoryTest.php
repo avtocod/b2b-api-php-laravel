@@ -4,21 +4,20 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\Tests\Connections;
 
-use Avtocod\B2BApi\Events\AfterRequestSendingEvent;
-use Avtocod\B2BApi\Events\BeforeRequestSendingEvent;
-use Avtocod\B2BApi\Events\RequestFailedEvent;
-use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 use ErrorException;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Testing\Fakes\EventFake;
 use RuntimeException;
 use Illuminate\Support\Str;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
+use Avtocod\B2BApi\Events\RequestFailedEvent;
+use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
+use Illuminate\Support\Testing\Fakes\EventFake;
 use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
+use Avtocod\B2BApi\Events\AfterRequestSendingEvent;
+use Avtocod\B2BApi\Events\BeforeRequestSendingEvent;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
-use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
+use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 
 /**
  * @covers \Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory

@@ -4,12 +4,12 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\Tests;
 
+use Avtocod\B2BApi\Tokens\Auth\AuthToken;
 use Avtocod\B2BApi\Laravel\ServiceProvider;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 use Avtocod\B2BApi\Laravel\ReportTypes\Repository as ReportTypesRepository;
 use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface as ReportTypesRepositoryInterface;
-use Avtocod\B2BApi\Tokens\Auth\AuthToken;
 
 /**
  * @covers \Avtocod\B2BApi\Laravel\ServiceProvider

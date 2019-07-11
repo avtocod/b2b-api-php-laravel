@@ -79,7 +79,7 @@ class Repository implements RepositoryInterface, Countable
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function count(): int
     {

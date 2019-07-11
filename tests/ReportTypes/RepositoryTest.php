@@ -4,11 +4,11 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\Tests\ReportTypes;
 
+use RuntimeException;
+use Illuminate\Support\Str;
 use Avtocod\B2BApi\Laravel\ReportTypes\Repository;
 use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
 use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface;
-use Illuminate\Support\Str;
-use RuntimeException;
 
 /**
  * @covers \Avtocod\B2BApi\Laravel\ReportTypes\Repository

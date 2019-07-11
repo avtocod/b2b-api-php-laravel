@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\Tests\ReportTypes;
 
-use Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo;
-use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
 use Illuminate\Support\Str;
+use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
+use Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo;
 
 /**
  * @covers \Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo
