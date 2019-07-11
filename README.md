@@ -2,7 +2,7 @@
   <img src="https://laravel.com/assets/img/components/logo-laravel.svg" alt="Laravel" width="240" />
 </p>
 
-# Расширенный клиент для работы с B2B API ресурса "avtocod"
+## [B2B Api client][b2b_api_client_laravel] integration with Laravel applications
 
 [![Version][badge_packagist_version]][link_packagist]
 [![Version][badge_php_version]][link_packagist]
@@ -11,55 +11,158 @@
 [![Downloads count][badge_downloads_count]][link_packagist]
 [![License][badge_license]][link_license]
 
-При помощи данного пакета вы сможете интегрировать сервис по работе с B2B API ресурса "avtocod" в ваше **Laravel &gt;=5.4** приложение с помощью нескольких простых шагов.
+## Install
 
-## Установка
-
-Для установки данного пакета выполните в терминале следующую команду:
+Require this package with composer using the following command:
 
 ```shell
-$ composer require avtocod/b2b-api-php-laravel "^2.2"
+$ composer require avtocod/b2b-api-php-laravel "^3.0"
 ```
 
-> Для этого необходим установленный `composer`. Для его установки перейдите по [данной ссылке][getcomposer].
+> Installed `composer` is required ([how to install composer][getcomposer]).
 
-> Обратите внимание на то, что необходимо фиксировать мажорную версию устанавливаемого пакета.
+> You need to fix the major version of package.
 
-Если вы используете Laravel версии 5.5 и выше, то сервис-провайдер данного пакета будет зарегистрирован автоматически. В противном случае вам необходимо самостоятельно зарегистрировать сервис-провайдер в секции `providers` файла `./config/app.php`:
+Laravel 5.5 and above uses Package Auto-Discovery, so doesn't require you to manually register the service-provider. Otherwise you must add the service provider to the `providers` array in `./config/app.php`:
 
 ```php
 'providers' => [
     // ...
-    Avtocod\B2BApiLaravel\B2BApiServiceProvider::class,
+    Avtocod\B2BApi\Laravel\ServiceProvider::class,
 ]
 ```
 
-После чего "опубликуйте" необходимые для пакета ресурсы с помощью команды:
+> If you wants to disable package service-provider auto discover, just add into your `composer.json` next lines:
+>
+> ```json
+> {
+>     "extra": {
+>         "laravel": {
+>             "dont-discover": [
+>                 "avtocod/b2b-api-php-laravel"
+>             ]
+>         }
+>     }
+> }
+> ```
 
-```shell
-$ ./artisan vendor:publish --provider="Avtocod\B2BApiLaravel\B2BApiServiceProvider"
+After that you should "publish" package configuration file using next command:
+
+```bash
+$ php ./artisan vendor:publish --provider='Avtocod\B2BApi\Laravel\ServiceProvider'
 ```
 
-> Данная команда создаст файл `./config/b2b-api-client.php` с настройками "по умолчанию", которые вам следует переопределить на свои.
+And configure it in the file `./config/b2b-api-client.php`.
 
-После чего откройте файл `./config/b2b-api-client.php` и укажите в нем ваши реквизиты для подключения к сервису B2B API.
+## Usage
 
-> С новыми версиями пакета могут добавляться новые опции в конфигурационном файле. Пожалуйста, не забывайте время от времени проверять этот момент.
+This package provides:
 
-## Использование
+- Connections factory _(`ConnectionsFactoryInterface`)_ - B2B API client factory _(configuration for it loads from published configuration file)_;
+- Report types repository _(`RepositoryInterface`)_ - single entry-point for getting access to the report types information;
 
-Данный пакет является пред-настроенной реализацией универсального пакета, который реализует весь функционал сервиса.
+In any part of your application you can resolve their implementations. For example, in artisan command:
 
-Для получения подробной информации о работе с сервисом и его документацией, пожалуйста, перейдите по следующей ссылке: **[avto-dev/b2b-api-php-laravel][b2b_api_client_laravel]**.
+```php
+<?php
+
+declare(strict_types = 1);
+
+namespace App\Console\Commands;
+
+use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface;
+use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
+
+class SomeCommand extends \Illuminate\Console\Command
+{
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $name = 'some:command';
+    
+    /**
+     * Execute the console command.
+     *
+     * @param RepositoryInterface         $report_types
+     * @param ConnectionsFactoryInterface $connections
+     *
+     * @return void
+     */
+    public function handle(RepositoryInterface $report_types, ConnectionsFactoryInterface $connections): void
+    {
+        $uid = $report_types->default()->getUid(); // Get default report type UID
+        
+        $report_uid = $connections->default()
+            ->userReportMake($uid, 'VIN', 'Z94CB41AAGR323020')
+            ->first()
+            ->getReportUid();
+        
+        $this->comment("Report UID: {$report_uid}");
+    }
+}
+```
+
+### Events
+
+Also this package proxying B2B Api client events into Laravel events dispatcher. So, feel free for writing own listeners like:
+
+```php
+<?php
+
+declare(strict_types = 1);
+
+namespace App\Listeners;
+
+use Psr\Log\LoggerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Avtocod\B2BApi\Events\RequestFailedEvent;
+
+class LogFailedB2bApiRequestListener
+{
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
+     * Create a new listener instance.
+     *
+     * @param LoggerInterface $logger
+     */
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    /**
+     * @param RequestFailedEvent $event
+     *
+     * @return void
+     */
+    public function handle(RequestFailedEvent $event): void
+    {
+        $this->logger->warning('Request to the Avtocod B2B API Failed', [
+            'request_uri'   => $event->getRequest()->getUri(),
+            'response_code' => $event->getResponse() instanceof ResponseInterface
+                ? $event->getResponse()->getStatusCode()
+                : null
+        ]);
+    }
+}
+```
+
+> More information about events listeners can be [found here][link_laravel_events]
 
 ### Testing
 
-For package testing we use `phpunit` framework. Just write into your terminal:
+For package testing we use `phpunit` framework and `docker-ce` + `docker-compose` as develop environment. So, just write into your terminal after repository cloning:
 
 ```shell
-$ git clone git@github.com:avtocod/b2b-api-php-laravel.git ./b2b-api-php-laravel && cd $_
-$ composer install
-$ composer test
+$ make build
+$ make latest # or 'make lowest'
+$ make test
 ```
 
 ## Changes log
@@ -100,4 +203,5 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [link_commits]:https://github.com/avtocod/b2b-api-php-laravel/commits
 [link_pulls]:https://github.com/avtocod/b2b-api-php-laravel/pulls
 [link_license]:https://github.com/avtocod/b2b-api-php-laravel/blob/master/LICENSE
-[b2b_api_client_laravel]:https://github.com/avto-dev/b2b-api-php-laravel
+[b2b_api_client_laravel]:https://github.com/avtocod/b2b-api-php
+[link_laravel_events]:https://laravel.com/docs/5.8/events
