@@ -7,11 +7,11 @@ namespace Avtocod\B2BApi\Laravel;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Config\Repository as ConfigRepository;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory;
+use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Avtocod\B2BApi\Laravel\ReportTypes\Repository as ReportTypesRepository;
 use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface as ReportTypesRepositoryInterface;
-use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 
 class ServiceProvider extends IlluminateServiceProvider
 {

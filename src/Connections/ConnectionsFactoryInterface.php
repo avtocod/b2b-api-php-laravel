@@ -2,8 +2,8 @@
 
 namespace Avtocod\B2BApi\Laravel\Connections;
 
-use Avtocod\B2BApi\ClientInterface;
 use Exception;
+use Avtocod\B2BApi\ClientInterface;
 
 /**
  * @see \Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory

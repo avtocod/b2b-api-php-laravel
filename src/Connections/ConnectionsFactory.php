@@ -48,7 +48,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addFactory(string $connection_name, array $settings = []): void
     {
@@ -80,7 +80,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function removeFactory(string $connection_name): void
     {
@@ -88,7 +88,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function names(): array
     {
@@ -96,7 +96,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws RuntimeException
      */
@@ -110,7 +110,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function has(string $connection_name): bool
     {
@@ -118,7 +118,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws RuntimeException
      */

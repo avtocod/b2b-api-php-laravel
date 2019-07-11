@@ -34,7 +34,7 @@ class Repository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws RuntimeException
      */
@@ -48,7 +48,7 @@ class Repository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function has(string $name): bool
     {
@@ -56,7 +56,7 @@ class Repository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function all(): array
     {
@@ -64,7 +64,7 @@ class Repository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function names(): array
     {
@@ -72,7 +72,7 @@ class Repository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws RuntimeException
      */
