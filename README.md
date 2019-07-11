@@ -204,4 +204,5 @@ This is open-sourced software licensed under the [MIT License][link_license].
 [link_pulls]:https://github.com/avtocod/b2b-api-php-laravel/pulls
 [link_license]:https://github.com/avtocod/b2b-api-php-laravel/blob/master/LICENSE
 [b2b_api_client_laravel]:https://github.com/avtocod/b2b-api-php
+[getcomposer]:https://getcomposer.org/download/
 [link_laravel_events]:https://laravel.com/docs/5.8/events
