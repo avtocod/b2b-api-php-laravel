@@ -22,7 +22,7 @@ class Repository implements RepositoryInterface, Countable
     /**
      * Create a new Repository instance.
      *
-     * @param array       $settings     An array with report types settings (like `['name' => ['uid' => '...'], ...]`)
+     * @param mixed[]     $settings     An array with report types settings (like `['name' => ['uid' => '...'], ...]`)
      * @param string|null $default_name Default report type name
      */
     public function __construct(array $settings, ?string $default_name = null)

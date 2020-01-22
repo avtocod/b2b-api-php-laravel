@@ -2,7 +2,7 @@
   <img src="https://laravel.com/assets/img/components/logo-laravel.svg" alt="Laravel" width="240" />
 </p>
 
-## [B2B Api client][b2b_api_client_laravel] integration with Laravel applications
+## [B2B Api client][b2b_api_client_laravel] integration for Laravel applications
 
 [![Version][badge_packagist_version]][link_packagist]
 [![Version][badge_php_version]][link_packagist]

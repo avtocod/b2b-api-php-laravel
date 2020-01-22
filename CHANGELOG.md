@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v3.1.0
+
+### Added
+
+- Laravel v6.x support
+- Tests running using GitHub Actions
+- PHP 7.4 tests running
+
+### Changed
+
+- StyleCI rules. Enabled: `length_ordered_imports`, disabled: `alpha_ordered_imports`
+- Updated dev-dependency versions
+
 ## v3.0.0
 
 ### Added
@@ -12,12 +25,12 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - Project `Makefile`
 - Environment variables `B2B_API_REPORT_TYPE_UID`, `B2B_API_AUTH_TOKEN`, `B2B_API_AUTH_USERNAME`, `B2B_API_AUTH_PASSWORD`, `B2B_API_AUTH_DOMAIN`, `B2B_API_TOKEN_LIFETIME` support
 - Classes:
-  * `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\Repository`
+  - `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\Repository`
 - Interfaces:
-  * `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface`
+  - `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface`
 
 ### Changed
 

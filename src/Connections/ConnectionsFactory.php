@@ -33,7 +33,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     /**
      * Create a new ConnectionsFactory instance.
      *
-     * @param array                 $settings     An array with connection settings
+     * @param mixed[]               $settings     An array with connection settings
      *                                            (like `['name' => ['base_uri' => '...'], ...]`)
      * @param string|null           $default_name Default connection name
      * @param EventsDispatcher|null $dispatcher   Required for proxying client event into laravel events dispatcher
@@ -53,8 +53,8 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      *
      * IMPORTANT: Passed settings must follows settings format!
      *
-     * @param string $connection_name
-     * @param array  $settings
+     * @param string  $connection_name
+     * @param mixed[] $settings
      *
      * @return void
      */

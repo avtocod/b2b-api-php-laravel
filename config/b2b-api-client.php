@@ -1,17 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Report Type
-    |--------------------------------------------------------------------------
-    |
-    | Report type name, that will be used by default.
-    |
-    */
-    'default_report_type' => 'default',
-
     /*
     |--------------------------------------------------------------------------
     | Report Types Settings
@@ -25,6 +14,7 @@ return [
     | ```
     |
     */
+
     'report_types'        => [
 
         'default' => [
@@ -35,13 +25,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default B2B API Client
+    | Default Report Type
     |--------------------------------------------------------------------------
     |
-    | Connection name, that will be used by default.
+    | Report type name, that will be used by default.
     |
     */
-    'default_connection'  => 'default',
+
+    'default_report_type' => 'default',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +54,7 @@ return [
     |                                   Docs: <http://docs.guzzlephp.org/en/latest/quickstart.html>
     |
     */
+
     'connections'         => [
 
         'default' => [
@@ -79,4 +71,14 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Default B2B API Client
+    |--------------------------------------------------------------------------
+    |
+    | Connection name, that will be used by default.
+    |
+    */
+
+    'default_connection'  => 'default',
 ];
