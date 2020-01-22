@@ -1,7 +1,11 @@
 parameters:
   level: 'max'
-  ignoreErrors:
-    - '#PHPDoc tag @return with type Avtocod\\B2BApi\\ClientInterface|Avtocod\\B2BApi\\WithSettingsInterface is not subtype of native type Avtocod\\B2BApi\\ClientInterface#'
-  reportUnmatchedIgnoredErrors: false
   paths:
     - src
+  ignoreErrors:
+    -
+      message: '#PHPDoc tag @return with type .*ClientInterface.* is not subtype of native type Avtocod\\B2BApi\\ClientInterface#'
+      paths:
+        - src/Connections/ConnectionsFactory*.php
+  checkGenericClassInNonGenericObjectType: false
+  checkMissingIterableValueType: false

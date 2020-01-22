@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v3.1.0
+
+### Added
+
+- Laravel v6.x support
+- Tests running using GitHub Actions
+- PHP 7.4 tests using CI
+
+### Changed
+
+- In `phpstan` disabled `checkGenericClassInNonGenericObjectType` and `checkMissingIterableValueType`
+- StyleCI rules. Enabled: `length_ordered_imports`, disabled: `alpha_ordered_imports`
+- Updated dev-dependency versions
+
 ## v3.0.0
 
 ### Added
