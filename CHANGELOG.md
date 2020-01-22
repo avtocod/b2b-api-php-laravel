@@ -26,12 +26,12 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 - Project `Makefile`
 - Environment variables `B2B_API_REPORT_TYPE_UID`, `B2B_API_AUTH_TOKEN`, `B2B_API_AUTH_USERNAME`, `B2B_API_AUTH_PASSWORD`, `B2B_API_AUTH_DOMAIN`, `B2B_API_TOKEN_LIFETIME` support
 - Classes:
-  * `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\Repository`
+  - `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\Repository`
 - Interfaces:
-  * `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface`
-  * `\Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface`
+  - `\Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface`
+  - `\Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface`
 
 ### Changed
 
