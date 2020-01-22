@@ -10,11 +10,10 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 - Laravel v6.x support
 - Tests running using GitHub Actions
-- PHP 7.4 tests using CI
+- PHP 7.4 tests running
 
 ### Changed
 
-- In `phpstan` disabled `checkGenericClassInNonGenericObjectType` and `checkMissingIterableValueType`
 - StyleCI rules. Enabled: `length_ordered_imports`, disabled: `alpha_ordered_imports`
 - Updated dev-dependency versions
 

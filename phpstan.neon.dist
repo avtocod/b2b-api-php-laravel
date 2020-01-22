@@ -7,5 +7,3 @@ parameters:
       message: '#PHPDoc tag @return with type .*ClientInterface.* is not subtype of native type Avtocod\\B2BApi\\ClientInterface#'
       paths:
         - src/Connections/ConnectionsFactory*.php
-  checkGenericClassInNonGenericObjectType: false
-  checkMissingIterableValueType: false
