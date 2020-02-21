@@ -30,8 +30,6 @@ class ReportTypeInfoTest extends AbstractTestCase
     }
 
     /**
-     *  @small
-     *
      * @return void
      */
     public function testInstanceOf(): void
@@ -40,8 +38,6 @@ class ReportTypeInfoTest extends AbstractTestCase
     }
 
     /**
-     * @small
-     *
      * @return void
      */
     public function testGetters(): void
