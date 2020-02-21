@@ -10,7 +10,7 @@ use RuntimeException;
 class Repository implements RepositoryInterface, Countable
 {
     /**
-     * @var ReportTypeInfo[]|array
+     * @var ReportTypeInfoInterface[]|array
      */
     protected $report_types;
 
@@ -28,7 +28,7 @@ class Repository implements RepositoryInterface, Countable
     public function __construct(array $settings, ?string $default_name = null)
     {
         foreach ($settings as $name => $options) {
-            $this->report_types[$name] = new ReportTypeInfo($options['uid']);
+            $this->report_types[$name] = $this->createReportTypeInfo($options);
         }
 
         $this->default_name = $default_name;
@@ -39,7 +39,7 @@ class Repository implements RepositoryInterface, Countable
      *
      * @throws RuntimeException
      */
-    public function get(string $name): ReportTypeInfo
+    public function get(string $name): ReportTypeInfoInterface
     {
         if (! $this->has($name)) {
             throw new RuntimeException("Report type named [$name] does not exists");
@@ -69,7 +69,7 @@ class Repository implements RepositoryInterface, Countable
      *
      * @throws RuntimeException
      */
-    public function default(): ReportTypeInfo
+    public function default(): ReportTypeInfoInterface
     {
         if ($this->default_name === null) {
             throw new RuntimeException('Default report type name does not set');
@@ -84,5 +84,15 @@ class Repository implements RepositoryInterface, Countable
     public function count(): int
     {
         return \count($this->report_types);
+    }
+
+    /**
+     * @param mixed[] $options
+     *
+     * @return ReportTypeInfoInterface
+     */
+    protected function createReportTypeInfo(array $options): ReportTypeInfoInterface
+    {
+        return new ReportTypeInfo($options['uid']);
     }
 }

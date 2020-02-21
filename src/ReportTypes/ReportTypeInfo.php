@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Avtocod\B2BApi\Laravel\ReportTypes;
 
-class ReportTypeInfo
+class ReportTypeInfo implements ReportTypeInfoInterface
 {
     /**
      * @var string
@@ -32,9 +32,7 @@ class ReportTypeInfo
     }
 
     /**
-     * Get report type UID.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getUid(): string
     {
