@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Added
 
-- Added interface `ReportTypeInfoInterface`
+- Interface `ReportTypeInfoInterface`
 
 ### Changed
 
