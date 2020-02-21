@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## UNRELEASED
+
+### Added
+
+- Added interface `ReportTypeInfoInterface`
+
+### Changed
+
+- Report type repository method `get` now will return `ReportTypeInfoInterface`
+- Report type repository method `default` now will return `ReportTypeInfoInterface`
+
 ## v3.1.0
 
 ### Added
