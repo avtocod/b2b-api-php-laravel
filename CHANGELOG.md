@@ -12,8 +12,8 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Changed
 
-- Repository method `get` now will return `ReportTypeInfoInterface`
-- Repository method `default` now will return `ReportTypeInfoInterface`
+- Report type repository method `get` now will return `ReportTypeInfoInterface`
+- Report type repository method `default` now will return `ReportTypeInfoInterface`
 
 ## v3.1.0
 
