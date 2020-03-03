@@ -12,9 +12,9 @@ interface RepositoryInterface
      *
      * @param string $name
      *
-     * @return ReportTypeInfo
+     * @return ReportTypeInfoInterface
      */
-    public function get(string $name): ReportTypeInfo;
+    public function get(string $name): ReportTypeInfoInterface;
 
     /**
      * Determine if report type is exists or not.
@@ -35,7 +35,7 @@ interface RepositoryInterface
     /**
      * Get default report type.
      *
-     * @return ReportTypeInfo
+     * @return ReportTypeInfoInterface
      */
-    public function default(): ReportTypeInfo;
+    public function default(): ReportTypeInfoInterface;
 }
