@@ -57,8 +57,12 @@ jobs:
       env: laravel=5.7
     - php: 7.3
       env: laravel=6.* coverage=true
+    - php: 7.3
+      env: laravel=7.* coverage=true
 
     - php: 7.4
       env: setup=lowest
     - php: 7.4
       env: laravel=6.* coverage=true
+    - php: 7.3
+      env: laravel=7.* coverage=true
