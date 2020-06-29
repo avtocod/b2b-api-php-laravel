@@ -16,7 +16,7 @@
 Require this package with composer using the following command:
 
 ```shell
-$ composer require avtocod/b2b-api-php-laravel "^3.0"
+$ composer require avtocod/b2b-api-php-laravel "^3.3"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -31,20 +31,6 @@ Laravel 5.5 and above uses Package Auto-Discovery, so doesn't require you to man
     Avtocod\B2BApi\Laravel\ServiceProvider::class,
 ]
 ```
-
-> If you wants to disable package service-provider auto discover, just add into your `composer.json` next lines:
->
-> ```json
-> {
->     "extra": {
->         "laravel": {
->             "dont-discover": [
->                 "avtocod/b2b-api-php-laravel"
->             ]
->         }
->     }
-> }
-> ```
 
 After that you should "publish" package configuration file using next command:
 
@@ -81,7 +67,7 @@ class SomeCommand extends \Illuminate\Console\Command
      * @var string
      */
     protected $name = 'some:command';
-    
+
     /**
      * Execute the console command.
      *
@@ -93,12 +79,12 @@ class SomeCommand extends \Illuminate\Console\Command
     public function handle(RepositoryInterface $report_types, ConnectionsFactoryInterface $connections): void
     {
         $uid = $report_types->default()->getUid(); // Get default report type UID
-        
+
         $report_uid = $connections->default()
             ->userReportMake($uid, 'VIN', 'Z94CB41AAGR323020')
             ->first()
             ->getReportUid();
-        
+
         $this->comment("Report UID: {$report_uid}");
     }
 }
@@ -185,7 +171,7 @@ This is open-sourced software licensed under the [MIT License][link_license].
 
 [badge_packagist_version]:https://img.shields.io/packagist/v/avtocod/b2b-api-php-laravel.svg?maxAge=180
 [badge_php_version]:https://img.shields.io/packagist/php-v/avtocod/b2b-api-php-laravel.svg?longCache=true
-[badge_build_status]:https://travis-ci.org/avtocod/b2b-api-php-laravel.svg?branch=master
+[badge_build_status]:https://img.shields.io/github/workflow/status/avtocod/b2b-api-php-laravel/tests/master
 [badge_coverage]:https://img.shields.io/codecov/c/github/avtocod/b2b-api-php-laravel/master.svg?maxAge=60
 [badge_downloads_count]:https://img.shields.io/packagist/dt/avtocod/b2b-api-php-laravel.svg?maxAge=180
 [badge_license]:https://img.shields.io/packagist/l/avtocod/b2b-api-php-laravel.svg?longCache=true

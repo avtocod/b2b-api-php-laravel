@@ -12,6 +12,7 @@ composer.lock
 /temp
 /tmp
 /*.tmp
+*.cache
 
 # etc.
 /coverage
