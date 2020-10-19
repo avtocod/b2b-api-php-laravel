@@ -49,6 +49,7 @@
             ]
         }
     },
+    "minimum-stability": "dev",
     "suggest": {
         "avtocod/specs": "Avtocod project public specifications."
     },
