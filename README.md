@@ -16,29 +16,20 @@
 Require this package with composer using the following command:
 
 ```shell
-$ composer require avtocod/b2b-api-php-laravel "^3.3"
+$ composer require avtocod/b2b-api-php-laravel "^4.0"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
 
 > You need to fix the major version of package.
 
-Laravel 5.5 and above uses Package Auto-Discovery, so doesn't require you to manually register the service-provider. Otherwise you must add the service provider to the `providers` array in `./config/app.php`:
-
-```php
-'providers' => [
-    // ...
-    Avtocod\B2BApi\Laravel\ServiceProvider::class,
-]
-```
-
 After that you should "publish" package configuration file using next command:
 
-```bash
+```shell
 $ php ./artisan vendor:publish --provider='Avtocod\B2BApi\Laravel\ServiceProvider'
 ```
 
-And configure it in the file `./config/b2b-api-client.php`.
+And modify `./config/b2b-api-client.php`.
 
 ## Usage
 
