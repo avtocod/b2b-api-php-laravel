@@ -10,9 +10,9 @@ use RuntimeException;
 class Repository implements RepositoryInterface, Countable
 {
     /**
-     * @var ReportTypeInfoInterface[]|array
+     * @var ReportTypeInfoInterface[]
      */
-    protected $report_types;
+    protected $report_types = [];
 
     /**
      * @var string|null
@@ -22,8 +22,8 @@ class Repository implements RepositoryInterface, Countable
     /**
      * Create a new Repository instance.
      *
-     * @param mixed[]     $settings     An array with report types settings (like `['name' => ['uid' => '...'], ...]`)
-     * @param string|null $default_name Default report type name
+     * @param array<string, array<string, string>> $settings     An array with report types settings
+     * @param string|null                          $default_name Default report type name
      */
     public function __construct(array $settings, ?string $default_name = null)
     {
@@ -87,7 +87,7 @@ class Repository implements RepositoryInterface, Countable
     }
 
     /**
-     * @param mixed[] $options
+     * @param array<string, string> $options
      *
      * @return ReportTypeInfoInterface
      */

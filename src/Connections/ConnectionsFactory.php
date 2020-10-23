@@ -10,15 +10,14 @@ use Avtocod\B2BApi\Client;
 use Avtocod\B2BApi\Settings;
 use Avtocod\B2BApi\ClientInterface;
 use Avtocod\B2BApi\Tokens\Auth\AuthToken;
-use Avtocod\B2BApi\WithSettingsInterface;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 
 class ConnectionsFactory implements ConnectionsFactoryInterface
 {
     /**
-     * @var Closure[]|array
+     * @var Closure[]
      */
-    protected $factories;
+    protected $factories = [];
 
     /**
      * @var string|null
@@ -33,10 +32,10 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     /**
      * Create a new ConnectionsFactory instance.
      *
-     * @param mixed[]               $settings     An array with connection settings
-     *                                            (like `['name' => ['base_uri' => '...'], ...]`)
-     * @param string|null           $default_name Default connection name
-     * @param EventsDispatcher|null $dispatcher   Required for proxying client event into laravel events dispatcher
+     * @param array<string, array<string, mixed>> $settings     An array with connection settings
+     * @param string|null                         $default_name Default connection name
+     * @param EventsDispatcher|null               $dispatcher   Required for proxying client event into laravel events
+     *                                                          dispatcher
      */
     public function __construct(array $settings, ?string $default_name = null, ?EventsDispatcher $dispatcher = null)
     {
@@ -53,8 +52,8 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      *
      * IMPORTANT: Passed settings must follows settings format!
      *
-     * @param string  $connection_name
-     * @param mixed[] $settings
+     * @param string               $connection_name
+     * @param array<string, mixed> $settings
      *
      * @return void
      */
@@ -112,7 +111,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      *
      * @throws RuntimeException
      *
-     * @return ClientInterface|WithSettingsInterface
+     * @return ClientInterface
      */
     public function make(string $connection_name): ClientInterface
     {
@@ -136,7 +135,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
      *
      * @throws RuntimeException
      *
-     * @return ClientInterface|WithSettingsInterface
+     * @return ClientInterface
      */
     public function default(): ClientInterface
     {
