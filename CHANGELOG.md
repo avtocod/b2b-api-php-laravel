@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Changed
 
-- Minimal `avtocod/b2b-api-php` package version now is `^4.0` (instead of `^3.3`)
+- Minimal required `avtocod/b2b-api-php` package version now is `^4.0` (instead of `^3.3`)
 - PhpDoc annotations updated
 
 ## v3.4.0
