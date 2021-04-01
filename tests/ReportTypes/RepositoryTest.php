@@ -104,7 +104,7 @@ class RepositoryTest extends AbstractTestCase
     public function testDefaultThrownAnException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageRegExp('~Default.*not set~i');
+        $this->expectExceptionMessageMatches('~Default.*not set~i');
 
         $this->repository = new Repository($this->settings);
 
@@ -119,7 +119,7 @@ class RepositoryTest extends AbstractTestCase
     public function testGetThrownAnException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageRegExp('~named.*not exist~i');
+        $this->expectExceptionMessageMatches('~named.*not exist~i');
 
         $this->repository->get(Str::random());
     }
