@@ -124,7 +124,7 @@ class ConnectionsFactoryTest extends AbstractTestCase
     public function testDefaultThrowsAnException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageRegExp('~Default.*not set~i');
+        $this->expectExceptionMessageMatches('~Default.*not set~i');
 
         $this->factory = new ConnectionsFactory($this->settings);
 
@@ -186,7 +186,7 @@ class ConnectionsFactoryTest extends AbstractTestCase
     public function testMakeThrowsAnExceptionWhenUnknownConnectionNamePassed(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageRegExp('~named.*not exist~i');
+        $this->expectExceptionMessageMatches('~named.*not exist~i');
 
         $this->factory->make(Str::random());
     }
@@ -226,7 +226,7 @@ class ConnectionsFactoryTest extends AbstractTestCase
     public function testFactoryThrownAnExceptionWhenAuthPasswordAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
-        $this->expectExceptionMessageRegExp('~password~');
+        $this->expectExceptionMessageMatches('~password~');
 
         $this->factory->addFactory($name = Str::random(), [
             'base_uri' => 'https://httpbin.org/delete/',
@@ -246,7 +246,7 @@ class ConnectionsFactoryTest extends AbstractTestCase
     public function testFactoryThrownAnExceptionWhenAuthUserAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
-        $this->expectExceptionMessageRegExp('~username~');
+        $this->expectExceptionMessageMatches('~username~');
 
         $this->factory->addFactory($name = Str::random(), [
             'base_uri' => 'https://httpbin.org/delete/',
@@ -266,7 +266,7 @@ class ConnectionsFactoryTest extends AbstractTestCase
     public function testFactoryThrownAnExceptionWhenAuthDomainAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
-        $this->expectExceptionMessageRegExp('~domain~');
+        $this->expectExceptionMessageMatches('~domain~');
 
         $this->factory->addFactory($name = Str::random(), [
             'base_uri' => 'https://httpbin.org/delete/',

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## UNRELEASED
+
+### Changed
+
+- Minimal required `avtocod/b2b-api-php` package version now is `^4.1`
+- Using method `expectExceptionMessageMatches` instead of `expectExceptionMessageRegExp` in tests
+
 ## v4.0.0
 
 ### Changed
