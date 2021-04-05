@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Avtocod\B2BApi\Events\RequestFailedEvent;
-use Tarampampam\GuzzleUrlMock\UrlsMockHandler;
+use AvtoDev\GuzzleUrlMock\UrlsMockHandler;
 use Illuminate\Support\Testing\Fakes\EventFake;
 use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
 use Avtocod\B2BApi\Events\AfterRequestSendingEvent;
