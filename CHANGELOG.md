@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Added
+
+- Support PHP `8.x` [#16]
+- Laravel `9.x` is supported now
+
+### Changed
+
+- Composer `2.x` is supported now
+- Minimal PHP version now is `7.3`
+
+[#16]:https://github.com/avtocod/b2b-api-php-laravel/issues/16
+
 ## v4.2.0
 
 ### Changed
