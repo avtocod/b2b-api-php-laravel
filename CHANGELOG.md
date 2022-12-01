@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Fixed
+
+- Inconsistency with real method signatures in `README.md` [#18]
+
+[#18]:https://github.com/avtocod/b2b-api-php-laravel/issues/18
+
 ## v4.3.0
 
 ### Added
