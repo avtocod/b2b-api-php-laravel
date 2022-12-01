@@ -47,6 +47,7 @@ declare(strict_types = 1);
 
 namespace App\Console\Commands;
 
+use Avtocod\B2BApi\Params\UserReportMakeParams;
 use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 
@@ -71,8 +72,11 @@ class SomeCommand extends \Illuminate\Console\Command
     {
         $uid = $report_types->default()->getUid(); // Get default report type UID
 
+        // Create a parameter object for a request to make a report
+        $report_make_params = UserReportMakeParams($uid, 'VIN', 'Z94CB41AAGR323020')
+
         $report_uid = $connections->default()
-            ->userReportMake($uid, 'VIN', 'Z94CB41AAGR323020')
+            ->userReportMake($report_make_params)
             ->first()
             ->getReportUid();
 
