@@ -13,8 +13,8 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 ### Changed
 
 - Up minimal `PHP` version to `8.1`
-- Up minimal `phpunit` version to `10.5`
 - Up minimal `phpstan` version to `1.10`
+- Up minimal `phpunit` version to `10.5`
 
 ### Fixed
 
