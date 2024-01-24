@@ -29,7 +29,7 @@
         "laravel/laravel": "^10.0",
         "mockery/mockery": "^1.6",
         "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^10.5",
         "avto-dev/guzzle-url-mock": "^1.5"
     },
     "autoload": {
