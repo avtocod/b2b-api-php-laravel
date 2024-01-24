@@ -64,12 +64,18 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
             /** @var array<string, string|int|null> $authorization */
             $authorization = $settings['auth'];
 
+            /** @var string|null $domain */
+            $domain = $authorization['domain'] ?? null;
+
+            /** @var int $lifetime */
+            $lifetime = $authorization['lifetime'] ?? 3600;
+
             /** @var string $token */
             $token = $authorization['token'] ?? AuthToken::generate(
-                (string) $authorization['username'],
-                (string) $authorization['password'],
-                    isset($authorization['domain']) ? (string) $authorization['domain'] : null,
-                    isset($authorization['lifetime']) ? (int) $authorization['lifetime'] : 3600
+                    (string) $authorization['username'],
+                    (string) $authorization['password'],
+                    $domain,
+                    $lifetime
                 );
 
             /** @var string|null $base_url */
