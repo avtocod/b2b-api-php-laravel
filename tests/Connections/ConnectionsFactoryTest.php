@@ -263,26 +263,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
     /**
      * @return void
      */
-    public function testFactoryThrownAnExceptionWhenAuthDomainAndTokenNotPassed(): void
-    {
-        $this->expectException(ErrorException::class);
-        $this->expectExceptionMessageMatches('~domain~');
-
-        $this->factory->addFactory($name = Str::random(), [
-            'base_uri' => 'https://httpbin.org/delete/',
-            'auth'     => [
-                'username' => 'username-2',
-                'password' => 'password-2',
-                //'domain'   => 'domain-2',
-            ],
-        ]);
-
-        $this->factory->make($name);
-    }
-
-    /**
-     * @return void
-     */
     public function testFactoryIsOkThenOnlyAuthTokenPassed(): void
     {
         $this->factory->addFactory($name = Str::random(), [

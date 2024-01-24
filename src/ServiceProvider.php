@@ -61,10 +61,13 @@ class ServiceProvider extends IlluminateServiceProvider
                 /** @var ConfigRepository $config */
                 $config = $container->make(ConfigRepository::class);
 
-                return new ReportTypesRepository(
-                    (array) $config->get(static::getConfigRootKeyName() . '.report_types'),
-                    $config->get(static::getConfigRootKeyName() . '.default_report_type')
-                );
+                /** @var array<string, array<string, string>> $settings */
+                $settings = (array) $config->get(static::getConfigRootKeyName() . '.report_types');
+
+                /** @var string $default_name */
+                $default_name = $config->get(static::getConfigRootKeyName() . '.default_report_type');
+
+                return new ReportTypesRepository($settings, $default_name);
             }
         );
     }
@@ -82,11 +85,16 @@ class ServiceProvider extends IlluminateServiceProvider
                 /** @var ConfigRepository $config */
                 $config = $container->make(ConfigRepository::class);
 
-                return new ConnectionsFactory(
-                    (array) $config->get(static::getConfigRootKeyName() . '.connections'),
-                    $config->get(static::getConfigRootKeyName() . '.default_connection'),
-                    $container->make(EventsDispatcher::class)
-                );
+                /** @var array<string, array<string, mixed>> $settings */
+                $settings = (array) $config->get(static::getConfigRootKeyName() . '.connections');
+
+                /** @var string $default_name */
+                $default_name = $config->get(static::getConfigRootKeyName() . '.default_connection');
+
+                /** @var EventsDispatcher $dispatcher */
+                $dispatcher = $container->make(EventsDispatcher::class);
+
+                return new ConnectionsFactory($settings, $default_name, $dispatcher);
             }
         );
     }
