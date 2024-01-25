@@ -21,22 +21,17 @@ jobs: # Docs: <https://git.io/JvxXE>
         setup: [basic, lowest]
         laravel: [default]
         coverage: [yes]
-        php: ['7.3', '7.4', '8.0']
-        include:
-          - php: '7.3'
-            setup: basic
-            coverage: no
-            laravel: '^7.0'
+        php: ['8.1','8.2','8.3']
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2 # Action page: <https://github.com/shivammathur/setup-php>
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring
-          tools: composer:v1 # TODO update composer up to v2
+          tools: composer:v2
 
       - name: Get Composer Cache Directory # Docs: <https://git.io/JfAKn#php---composer>
         id: composer-cache
@@ -85,7 +80,7 @@ jobs: # Docs: <https://git.io/JvxXE>
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Lint changelog file
         uses: docker://avtodev/markdown-lint:v1 # Action page: <https://github.com/avto-dev/markdown-lint>

@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Avtocod\B2BApi\Laravel\Connections;
 
 use Closure;
+use ErrorException;
 use RuntimeException;
 use Avtocod\B2BApi\Client;
 use Avtocod\B2BApi\Settings;
@@ -60,21 +61,32 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
     public function addFactory(string $connection_name, array $settings = []): void
     {
         // Create connections factory
-        $this->factories[$connection_name] = Closure::fromCallable(function () use ($settings): ClientInterface {
+        $this->factories[$connection_name] = (function () use ($settings): ClientInterface {
+            /** @var array<string, string|int|null> $authorization */
             $authorization = $settings['auth'];
 
+            /** @var int $lifetime */
+            $lifetime = $authorization['lifetime'] ?? 3600;
+
+            /** @var string $token */
             $token = $authorization['token'] ?? AuthToken::generate(
-                    $authorization['username'],
-                    $authorization['password'],
-                    $authorization['domain'],
-                    $authorization['lifetime'] ?? 3600
-                );
+                (string) $authorization['username'],
+                (string) $authorization['password'],
+                (string) $authorization['domain'],
+                $lifetime
+            );
+
+            /** @var string|null $base_url */
+            $base_url = $settings['base_uri'] ?? null;
+
+            /** @var array<string, mixed>|null $guzzle_options */
+            $guzzle_options = $settings['guzzle_options'] ?? null;
 
             return new Client(
                 new Settings(
                     $token,
-                    $settings['base_uri'] ?? null,
-                    $settings['guzzle_options'] ?? null
+                    $base_url,
+                    $guzzle_options
                 ),
                 null,
                 function ($event): void {
@@ -83,7 +95,7 @@ class ConnectionsFactory implements ConnectionsFactoryInterface
                     }
                 }
             );
-        });
+        })(...);
     }
 
     /**
