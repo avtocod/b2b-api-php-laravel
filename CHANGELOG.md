@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Added
+
+- Support Laravel 11
+
+### Changed
+
+- Up minimal `PHP` version to `8.2`
+- Up minimal version for `illuminate`-dependencies
+
 ## v4.4.0
 
 ### Added

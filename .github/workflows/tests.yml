@@ -21,7 +21,7 @@ jobs: # Docs: <https://git.io/JvxXE>
         setup: [basic, lowest]
         laravel: [default]
         coverage: [yes]
-        php: ['8.1','8.2','8.3']
+        php: ['8.2','8.3']
     steps:
       - name: Check out code
         uses: actions/checkout@v4
