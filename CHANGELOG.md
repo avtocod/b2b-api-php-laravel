@@ -8,12 +8,15 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ### Added
 
-- Support Laravel 11
+- Support for Laravel 11
 
 ### Changed
 
-- Up minimal `PHP` version to `8.2`
-- Up minimal version for `illuminate`-dependencies
+- Composer updated from v2.6.6 to v2.8.3
+
+### Removed
+
+- Obsolete attribute `version` from docker-compose.yml
 
 ## v4.4.0
 
