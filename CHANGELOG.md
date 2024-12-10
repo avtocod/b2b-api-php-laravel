@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Added
+
+- Support for Laravel 11
+
+### Changed
+
+- Composer updated from v2.6.6 to v2.8.3
+
+### Removed
+
+- Obsolete attribute `version` from docker-compose.yml
+
 ## v4.4.0
 
 ### Added
