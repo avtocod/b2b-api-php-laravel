@@ -18,19 +18,19 @@
     "require": {
         "php": "^8.1",
         "avtocod/b2b-api-php": "^4.1",
-        "illuminate/support": "^10.0 | ^11.0",
-        "illuminate/container": "^10.0 | ^11.0",
-        "illuminate/contracts": "^10.0 | ^11.0",
-        "illuminate/events": "^10.0 | ^11.0",
-        "illuminate/config": "^10.0 | ^11.0"
+        "illuminate/support": "^10.0 | ^11.0 | ^12.0",
+        "illuminate/container": "^10.0 | ^11.0 | ^12.0",
+        "illuminate/contracts": "^10.0 | ^11.0 | ^12.0",
+        "illuminate/events": "^10.0 | ^11.0 | ^12.0",
+        "illuminate/config": "^10.0 | ^11.0 | ^12.0"
     },
     "require-dev": {
         "ext-json": "*",
-        "laravel/laravel": "^10.0 | ^11.0",
-        "mockery/mockery": "^1.6",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.5",
-        "avto-dev/guzzle-url-mock": "^1.5"
+        "laravel/laravel": "^10.0 | ^11.0 | ^12.0",
+        "mockery/mockery": "^1.6.12",
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^10.5 | ^11.5",
+        "avto-dev/guzzle-url-mock": "^1.6"
     },
     "autoload": {
         "psr-4": {

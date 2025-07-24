@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## Unreleased
+
+### Added
+
+- Laravel `12.x` support
+
+### Changed
+
+- Version of `composer` in `Dockerfile` updated up to `2.8.10`
+- Update dev dependencies
+
 ## v4.5.0
 
 ### Added

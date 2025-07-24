@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace Avtocod\B2BApi\Laravel\Connections;
 
 use Closure;
-use ErrorException;
 use RuntimeException;
 use Avtocod\B2BApi\Client;
 use Avtocod\B2BApi\Settings;

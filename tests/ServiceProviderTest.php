@@ -6,14 +6,13 @@ namespace Avtocod\B2BApi\Laravel\Tests;
 
 use Avtocod\B2BApi\Tokens\Auth\AuthToken;
 use Avtocod\B2BApi\Laravel\ServiceProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 use Avtocod\B2BApi\Laravel\ReportTypes\Repository as ReportTypesRepository;
 use Avtocod\B2BApi\Laravel\ReportTypes\RepositoryInterface as ReportTypesRepositoryInterface;
 
-/**
- * @covers \Avtocod\B2BApi\Laravel\ServiceProvider
- */
+#[CoversClass(ServiceProvider::class)]
 class ServiceProviderTest extends AbstractTestCase
 {
     /**

@@ -5,13 +5,12 @@ declare(strict_types = 1);
 namespace Avtocod\B2BApi\Laravel\Tests\ReportTypes;
 
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
 use Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo;
 use Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfoInterface;
 
-/**
- * @covers \Avtocod\B2BApi\Laravel\ReportTypes\ReportTypeInfo
- */
+#[CoversClass(ReportTypeInfo::class)]
 class ReportTypeInfoTest extends AbstractTestCase
 {
     /**
