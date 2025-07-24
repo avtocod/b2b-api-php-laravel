@@ -9,8 +9,10 @@ use RuntimeException;
 use Illuminate\Support\Str;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Avtocod\B2BApi\Events\RequestFailedEvent;
+use PHPUnit\Framework\Attributes\Small;
 use AvtoDev\GuzzleUrlMock\UrlsMockHandler;
+use Avtocod\B2BApi\Events\RequestFailedEvent;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Illuminate\Support\Testing\Fakes\EventFake;
 use Avtocod\B2BApi\Laravel\Tests\AbstractTestCase;
 use Avtocod\B2BApi\Events\AfterRequestSendingEvent;
@@ -19,9 +21,10 @@ use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 use Avtocod\B2BApi\Laravel\Connections\ConnectionsFactoryInterface;
 
-/**
- * @covers \Avtocod\B2BApi\Laravel\Connections\ConnectionsFactory
- */
+#[
+    CoversClass(ConnectionsFactory::class),
+    Small,
+]
 class ConnectionsFactoryTest extends AbstractTestCase
 {
     /**
@@ -83,31 +86,16 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory = new ConnectionsFactory($this->settings, $this->default, $this->events);
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testInstanceOf(): void
     {
         $this->assertInstanceOf(ConnectionsFactoryInterface::class, $this->factory);
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testNames(): void
     {
         $this->assertSame(\array_keys($this->settings), $this->factory->names());
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testDefault(): void
     {
         $this->assertSame(
@@ -116,11 +104,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         );
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testDefaultThrowsAnException(): void
     {
         $this->expectException(RuntimeException::class);
@@ -131,11 +114,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory->default();
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testHas(): void
     {
         $this->assertTrue($this->factory->has($this->default));
@@ -145,11 +123,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->assertFalse($this->factory->has(Str::random()));
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testMake(): void
     {
         $this->assertSame(
@@ -178,11 +151,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         );
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testMakeThrowsAnExceptionWhenUnknownConnectionNamePassed(): void
     {
         $this->expectException(RuntimeException::class);
@@ -191,11 +159,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory->make(Str::random());
     }
 
-    /**
-     * @small
-     *
-     * @return void
-     */
     public function testAddAndRemoveFactory(): void
     {
         $this->factory->addFactory($name = Str::random(), [
@@ -220,9 +183,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->assertFalse($this->factory->has($name));
     }
 
-    /**
-     * @return void
-     */
     public function testFactoryThrownAnExceptionWhenAuthPasswordAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
@@ -240,9 +200,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory->make($name);
     }
 
-    /**
-     * @return void
-     */
     public function testFactoryThrownAnExceptionWhenAuthUserAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
@@ -260,9 +217,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory->make($name);
     }
 
-    /**
-     * @return void
-     */
     public function testFactoryThrownAnExceptionWhenAuthDomainAndTokenNotPassed(): void
     {
         $this->expectException(ErrorException::class);
@@ -280,9 +234,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->factory->make($name);
     }
 
-    /**
-     * @return void
-     */
     public function testFactoryIsOkThenOnlyAuthTokenPassed(): void
     {
         $this->factory->addFactory($name = Str::random(), [
@@ -295,9 +246,6 @@ class ConnectionsFactoryTest extends AbstractTestCase
         $this->assertSame($token, $this->factory->make($name)->getSettings()->getAuthToken());
     }
 
-    /**
-     * @return void
-     */
     public function testEventsFiring(): void
     {
         $this->factory->addFactory($name = Str::random(), [
