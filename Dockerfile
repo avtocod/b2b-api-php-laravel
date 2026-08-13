@@ -1,6 +1,6 @@
 FROM php:8.5-alpine
 
-COPY --from=composer:2.10.2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.10 /usr/bin/composer /usr/bin/composer
 
 RUN set -x \
     && apk add --no-cache binutils git \
